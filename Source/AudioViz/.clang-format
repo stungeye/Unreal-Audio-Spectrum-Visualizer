@@ -1,0 +1,9 @@
+﻿---
+BasedOnStyle: LLVM
+AlignConsecutiveMacros: 'true'
+AlignConsecutiveAssignments: 'true'
+AlignTrailingComments: 'true'
+Language: Cpp
+SortIncludes: 'true'
+
+...
