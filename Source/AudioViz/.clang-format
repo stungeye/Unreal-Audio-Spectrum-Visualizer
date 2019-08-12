@@ -3,6 +3,7 @@ BasedOnStyle: LLVM
 AlignConsecutiveMacros: 'true'
 AlignConsecutiveAssignments: 'true'
 AlignTrailingComments: 'true'
+ColumnLimit: 0
 Language: Cpp
 SortIncludes: 'true'
 
