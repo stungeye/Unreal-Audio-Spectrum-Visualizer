@@ -1,6 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
 #include "SpectralVisualizer.h"
 #include "TimeSynthComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -21,7 +18,7 @@ ASpectralVisualizer::ASpectralVisualizer() {
 
     FString SpectrumBarName = FString::Printf(TEXT("SpectrumBar%dHz"), i * 50);
 
-    UStaticMeshComponent *SpectrumBar = CreateDefaultSubobject<UStaticMeshComponent>(*SpectrumBarName);
+    auto *SpectrumBar = CreateDefaultSubobject<UStaticMeshComponent>(*SpectrumBarName);
     SpectrumBar->SetupAttachment(TimeSynthComponent);
     SpectrumBar->SetStaticMesh(SpectrumBarMesh);
     SpectrumBar->SetRelativeLocation(FVector(i * SpectrumBarSpacing, 0.f, 0.f));
@@ -47,11 +44,10 @@ void ASpectralVisualizer::Refresh() {
     if (SpectrumBars.IsValidIndex(i)) {
       UStaticMeshComponent *SpectrumBar = SpectrumBars[i];
       SpectrumBar->SetStaticMesh(SpectrumBarMesh);
-      SpectrumBar->SetRelativeLocation(FVector((i + 1) * SpectrumBarSpacing, 0.f, 0.f));
+      SpectrumBar->SetRelativeLocation(FVector(static_cast<float>(i + 1) * SpectrumBarSpacing, 0.f, 0.f));
     }
   }
 }
-
 
 // Called every frame
 void ASpectralVisualizer::Tick(float DeltaTime) {
